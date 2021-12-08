@@ -2,7 +2,9 @@ const users = require("../routes/users")
 
 
  const getAllUsers = (req,res)=>{
-     res.send(users)
+     
+     res = users;
+     res.json(res)
      console.log(res)
  }
 

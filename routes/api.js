@@ -1,10 +1,17 @@
-const express = require("express");
 
-const users = require("../controllres/users")
-
-const route = express.Router();
+const router = require('express').Router();
+const contacts = require("../controllres/contacts");
 
 
-route.get('getAllUsers',users.getAllUsers);
+// //לקבל את רשימת המשתמשים
+// router.get('/getAllUsers',users.getAllUsers);
 
-module.exports = route
+//לצור משתמש חדש - הרשמה
+router.post('/createNewContact', contacts.createNewContact);
+
+//לקבל את רשימת המשתמשים
+router.get('/getAllContacts', contacts.getAllContacts);
+
+//להתחבר למערכת ע"י אימייל של משתמש רשום
+router.get('/login/:email', contacts.login)
+module.exports = router

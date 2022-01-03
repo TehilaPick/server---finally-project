@@ -12,9 +12,9 @@ async function getAllContacts(req, res, next) {
 
 
 async function createNewContact(req, res, next){
-    const {contactname,email,phone,id} = req.body
+    const {contactname,email,phone,permission} = req.body
     try{
-        res.json(await contacts.createNewContact(contactname,email,phone,id))
+        res.json(await contacts.createNewContact(contactname,email,phone,permission))
     }
     catch(err){
         console.log("dont success to create new contact", err.message);

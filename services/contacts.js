@@ -13,12 +13,12 @@ async function getAllContacts(){
   }
 }
 
-async function createNewContact(contactname,email,phone,id){
+async function createNewContact(contactname,email,phone,permission){
     
     const rows = await db.query(
-        `INSERT INTO contact(contactname,email,phone,id)
+        `INSERT INTO contact(contactname,email,phone,permission)
         VALUES(?,?,?,?);`,
-        [contactname,email,phone,id]
+        [contactname,email,phone,permission]
     );
     const data = rows;
     return {
@@ -29,7 +29,7 @@ async function createNewContact(contactname,email,phone,id){
 
 async function login(email){
     const result = await db.query(
-        `SELECT contactname,email,phone,id FROM contact
+        `SELECT contactname,email,phone,id,permission FROM contact
         WHERE email=?`,
         [email]
     )
